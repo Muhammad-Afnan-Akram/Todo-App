@@ -8,9 +8,19 @@ import { Todo } from 'src/app/Todo';
 })
 export class TodoItemComponent {
   @Input() todo!: Todo;
-  @Output() todoDelete:EventEmitter<Todo>=new EventEmitter();
-  Onclick(todo:Todo){
+  @Input() i!: number;
+  @Output() todoDelete: EventEmitter<Todo> = new EventEmitter();
+  @Output() todoCheckbox: EventEmitter<Todo> = new EventEmitter();
+  // Onclick(todo:Todo){
+  //   this.todoDelete.emit(todo);
+  //   console.log("Btn is pressed")
+  // }
+  onClick(todo: Todo){
     this.todoDelete.emit(todo);
-    console.log("Btn is pressed")
+    console.log("onClick has been triggerd")
+  }
+  onCheckboxClick(todo:Todo){
+    console.log(todo)
+    this.todoCheckbox.emit(todo);
   }
 }
